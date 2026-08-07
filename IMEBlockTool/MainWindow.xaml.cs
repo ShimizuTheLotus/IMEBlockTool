@@ -38,7 +38,7 @@ namespace IMEBlockTool
 
         // Queue
         private readonly ConcurrentQueue<Action> _actionQueue = new();
-private int _isProcessingQueue = 0;
+        private int _isProcessingQueue = 0;
         private readonly object _queueLock = new();
 
 
