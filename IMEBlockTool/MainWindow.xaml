@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="IMEBlockTool.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:IMEBlockTool"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="IME Block Tool">
+
+    <Window.SystemBackdrop>
+        <MicaBackdrop />
+    </Window.SystemBackdrop>
+
+    <Grid Margin="12">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+            <TextBlock VerticalAlignment="Center" Text="Enable blocking:" Margin="0,0,8,0" />
+            <ToggleButton x:Name="ToggleBlock" Width="80" Content="Off" Checked="ToggleBlock_Checked" Unchecked="ToggleBlock_Unchecked" />
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*" />
+                <ColumnDefinition Width="2*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid Margin="0,0,8,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <TextBlock Text="Blocked Programs (process names)" FontWeight="SemiBold" />
+                <ListBox x:Name="ListBlocked" Grid.Row="1" />
+                <StackPanel Orientation="Horizontal" Grid.Row="2" HorizontalAlignment="Right" Margin="0,8,0,0">
+                    <TextBox x:Name="TxtNew" Width="160" PlaceholderText="notepad.exe" />
+                    <Button Content="Add" Click="Add_Click" Margin="8,0,0,0" />
+                    <Button Content="Remove" Click="Remove_Click" Margin="8,0,0,0" />
+                </StackPanel>
+            </Grid>
+
+            <StackPanel Grid.Column="1" Margin="8">
+                <TextBlock TextWrapping="Wrap">This tool watches the foreground window. When a process listed above becomes active the tool requests a non-IME keyboard layout for that window to reduce IME input. Add process executable names (e.g., notepad.exe) one per entry.</TextBlock>
+                <Button Content="Save" Click="Save_Click" Margin="0,8,0,0" HorizontalAlignment="Right" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</Window>
