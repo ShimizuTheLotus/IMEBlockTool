@@ -68,6 +68,8 @@ namespace IMEBlockTool
 
         [DllImport("user32.dll")]
         private static extern IntPtr SendMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
+        [DllImport("user32.dll")]
+        private static extern bool PostMessage(IntPtr hWnd, uint Msg, IntPtr wParam, IntPtr lParam);
 
         [DllImport("user32.dll")]
         private static extern IntPtr GetFocus();
@@ -289,7 +291,11 @@ namespace IMEBlockTool
 
             try
             {
-                SendMessage(hwnd, WM_INPUTLANGCHANGEREQUEST, IntPtr.Zero, _englishHkl);
+                const uint KLF_ACTIVATE = 0x0001;
+                _englishHkl = LoadKeyboardLayout("00000409", KLF_ACTIVATE);
+                // 发送时 wParam 设置为 1 或 IntPtr(1)
+                PostMessage(hwnd, WM_INPUTLANGCHANGEREQUEST, (IntPtr)1, _englishHkl);
+                //SendMessage(hwnd, WM_INPUTLANGCHANGEREQUEST, IntPtr.Zero, _englishHkl);
             }
             catch (Exception ex)
             {

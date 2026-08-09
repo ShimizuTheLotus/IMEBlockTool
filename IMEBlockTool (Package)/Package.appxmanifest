@@ -10,8 +10,8 @@
 
   <Identity
     Name="94e8655e-7794-4059-814f-e4900eb6da88"
-    Publisher="CN=ChiSu"
-    Version="1.0.0.0" />
+    Publisher="CN=99E803D1-448C-451E-AABB-517F391355C6"
+    Version="1.0.1.0" />
 
   <mp:PhoneIdentity PhoneProductId="94e8655e-7794-4059-814f-e4900eb6da88" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
